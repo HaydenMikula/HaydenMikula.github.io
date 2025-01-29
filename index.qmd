@@ -10,9 +10,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/hayden-mikula-67624a28b/
-    - icon: instagram
-      text: Instagram
-      href: https://instagram.com
     - icon: github
       text: GitHub
       href: https://github.com/HaydenMikula
@@ -23,20 +20,14 @@ about:
     - icon: mailbox
       text: Email
       href: mailto:hrm12@geneseo.edu
-
 ---
 
-
-Hayden Mikula majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Hayden Mikula majors in Data Analytics at SUNY Geneseo.
 
 ## Education
 
-State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Economics
+State University of New York at Geneseo \| Geneseo, NY <br> B.S. in Data Analytics \| Aug 2022 - May 2026 <br> Minor in Edgar Fellows Honors Program
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
-
-
+Starbucks Analytics \| Data Analyst Intern \| May 2024 - Aug 2024
