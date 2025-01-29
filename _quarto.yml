@@ -10,9 +10,11 @@ website:
     left:
       - text: Blog
         href: blog-listing.qmd
+      - text: R-Basics
+        href: danl-310-quarto-r.qmd
             
   page-footer: 
-    center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© YOUR NAME, 2025"
+    center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© Hayden Mikula, 2025"
 
 format:
   html:
