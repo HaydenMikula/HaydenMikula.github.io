@@ -137,7 +137,7 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nPython Basics\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nByeong-Hak Choe\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPython Basics\n\n\n\n\n\n\n\n\nFeb 17, 2025\n\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "danl_proj_nba.html#salary-distribution-among-teams",
@@ -257,5 +257,89 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html",
+    "href": "posts/python_basics/python_basics_4&5.html",
+    "title": "Python Basics",
+    "section": "",
+    "text": "A ‘value’ in Python is any amount of data, no matter what type\nExamples of values:\n\n10 #Integer\n'Hello' # String\n5.71 # Float\nTrue # Bool\n\nWhen these values are assigned to a data container, they become ‘variables’\nVariables are capable of storing one or more values for use in data collection, transformation, etc.\n\na = 10 # 'a' is the name of the variable\nprint(a)\nexample_list = [20, 9, True, 'string']\n\n10"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#values-variables-and-types",
+    "href": "posts/python_basics/python_basics_4&5.html#values-variables-and-types",
+    "title": "Python Basics",
+    "section": "",
+    "text": "A ‘value’ in Python is any amount of data, no matter what type\nExamples of values:\n\n10 #Integer\n'Hello' # String\n5.71 # Float\nTrue # Bool\n\nWhen these values are assigned to a data container, they become ‘variables’\nVariables are capable of storing one or more values for use in data collection, transformation, etc.\n\na = 10 # 'a' is the name of the variable\nprint(a)\nexample_list = [20, 9, True, 'string']\n\n10"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#data-frames",
+    "href": "posts/python_basics/python_basics_4&5.html#data-frames",
+    "title": "Python Basics",
+    "section": "Data Frames",
+    "text": "Data Frames\nA ‘data.frame’ is a format of data structure that stores data using observations (rows) and variables (columns). Each individual value corresponds to a ‘cell’, which has meaning based on its associated row index and variable.\nExample:\n\nimport pandas as pd\nnba = pd.read_csv(\"https://bcdanl.github.io/data/nba.csv\")\nnba\n\n\n  \n    \n\n\n\n\n\n\nName\nTeam\nPosition\nBirthday\nSalary\n\n\n\n\n0\nShake Milton\nPhiladelphia 76ers\nSG\n9/26/96\n1445697\n\n\n1\nChristian Wood\nDetroit Pistons\nPF\n9/27/95\n1645357\n\n\n2\nPJ Washington\nCharlotte Hornets\nPF\n8/23/98\n3831840\n\n\n3\nDerrick Rose\nDetroit Pistons\nPG\n10/4/88\n7317074\n\n\n4\nMarial Shayok\nPhiladelphia 76ers\nG\n7/26/95\n79568\n\n\n...\n...\n...\n...\n...\n...\n\n\n445\nAustin Rivers\nHouston Rockets\nPG\n8/1/92\n2174310\n\n\n446\nHarry Giles\nSacramento Kings\nPF\n4/22/98\n2578800\n\n\n447\nRobin Lopez\nMilwaukee Bucks\nC\n4/1/88\n4767000\n\n\n448\nCollin Sexton\nCleveland Cavaliers\nPG\n1/4/99\n4764960\n\n\n449\nRicky Rubio\nPhoenix Suns\nPG\n10/21/90\n16200000\n\n\n\n\n450 rows × 5 columns"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#lists-dictionaries-and-slicing",
+    "href": "posts/python_basics/python_basics_4&5.html#lists-dictionaries-and-slicing",
+    "title": "Python Basics",
+    "section": "Lists, Dictionaries, and Slicing",
+    "text": "Lists, Dictionaries, and Slicing\nAs previously shown, a ‘list’ is a data container that works in a singlular series of data (i.e. A single row of values). The values in a list are able to be gathered with [] (see below):\n\nexample_list\n\n[20, 9, True, 'string']\n\n\n\nexample_list[0] # Produces the FIRST value in the list, because Python begins counting at 0 instead of 1\n\n20\n\n\nA ‘dictionary’, in comparison, is a list that utilizes a key-value pair to identify values rather than a numerical index:\n\nexample_dict = {'a' : 10, 'b' : 14, 'c' : 'Hello'}\n  #example_dict[1] would not work, because dictionaries do not have numerical indexes\n\nprint(example_dict.keys())\nprint(example_dict.values())\n\nexample_dict['b']\n\ndict_keys(['a', 'b', 'c'])\ndict_values([10, 14, 'Hello'])\n\n\n14\n\n\nStrings and Lists can be ‘sliced’ with []\n\nFor strings, their characters are sliced\nFor lists, their individual values are sliced\n\nKinds of slicing:\n\n[ _ :]\n\nSlices from the indicated position to the end\n\n[ : _ ]\n\nSlices from the beginning to the indicated position\n\n[ _ : _ ]\n\nSlices from the (left) indicated position to the (right) indicated position\n\nCan add an additional ’: _’ at the end of any of these slicing methods to indicate the ‘step’ of the slicing (eg. A step of ‘2’ = every other value).\n\n\n\n\neg_string = \"Hello, I am a string.\"\nprint(eg_string[4]) # 5th character, starting at 0\n\nprint(example_list[-1]) # Last item in the list\n\nprint(eg_string[3:13]) # Characters starting at position 3 and ending at position 13\n\no\nstring\nlo, I am a"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#operators",
+    "href": "posts/python_basics/python_basics_4&5.html#operators",
+    "title": "Python Basics",
+    "section": "Operators",
+    "text": "Operators\nPython includes symbols that work as operations that act on data, including:\n\n‘+’ for addition\n‘-’ for subtraction\n’*’ for multiplication\n‘/’ for division\n’**’ for exponents\n‘//’ for integer division\n\nThese operations work on most data types, though some work better than others. For example:\n\nstring_1 = \"My name is\"\nstring_2 = \"Steven\"\nprint(string_1 + \" \" + string_2)\n  #string_1 - string_2 would not work; subtraction is not supported by strings\nprint((string_2 + ' ') * 4)\n\nMy name is Steven\nSteven Steven Steven Steven"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#value-conversion",
+    "href": "posts/python_basics/python_basics_4&5.html#value-conversion",
+    "title": "Python Basics",
+    "section": "Value Conversion",
+    "text": "Value Conversion\nWe are able to alter a value’s ‘type’ with built-in Python functions, such as:\n\nint()\nfloat()\nstr()\nbool()\n\n\neg_int = int(29.75)\neg_float = float(10)\neg_str = str(92)\neg_bool = bool(0)\n\nprint(eg_int)\nprint(eg_float)\nprint(eg_str)\nprint(eg_bool)\n\n29\n10.0\n92\nFalse"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#boolean-conditions",
+    "href": "posts/python_basics/python_basics_4&5.html#boolean-conditions",
+    "title": "Python Basics",
+    "section": "Boolean Conditions",
+    "text": "Boolean Conditions\nBoolean conditions are operations which result in a boolean ‘True’ or ‘False’ value, and are used to either filter the data we are looking at or proceed with an action based on the True/False value of the condition.\n\nprint(10 == 20) # False\nprint(20 == '20') # False\n\nFalse\nFalse\n\n\nKinds of conditions (using x/y as placeholders for data):\n\nx and y\n\n“Are both x and y True?”\n\nx or y\n\n“Is either x or y True?”\n\nnot x\n\n“Is x False?”\n\nx in y\n\n“Does x exist within y?”\n\nx == y\n\n“Is x equal to y?”\n\nx != y\n\n“Is x not equal to y?”\n\nx &gt; y\n\n“Is x greater than y?”\n\nx &gt;= y\n\n“Is x greater than or equal to y?”\n\nx &lt; y\n\n“Is x less than y?”\n\nx &lt;= y\n\n“Is x less than or equal to y?”\n\n\n‘if’ statements are lines of code that run when the outlined condition is met\n\nnum = 20\nif num == 20:\n  print('That is correct!')\n\nThat is correct!\n\n\n‘else’ statements are lines of code that are run when the outlined condition of an ‘if’ statement is NOT met\n\nnum = 15\nif num == 20:\n  print('That is correct!')\nelse:\n  print('That is incorrect...')\n\nThat is incorrect...\n\n\n‘elif’ statements are lines of code that are run when the previous ‘if’ or ‘elif’ condition is not met\n\nnum = 0\nif num == 20:\n  print('That is correct!')\nelif 18 &lt;= num &lt; 20:\n  print(\"You're getting closer.\")\nelif num &gt; 20:\n  print('Too far!')\nelse:\n  print(\"Too low!\")\n\nToo low!"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#while-and-for-loops",
+    "href": "posts/python_basics/python_basics_4&5.html#while-and-for-loops",
+    "title": "Python Basics",
+    "section": "While and For loops",
+    "text": "While and For loops\n\nA ‘while’ loop carries out a set of instructions for as long as a certain condition is met\nA ‘for’ loop iterates on a data container and carries out a set of instructions for as many times as the container is iterated\n\n‘continue’ is used to skip to the end of the loop\n‘break’ is used to stop the loop\n\n\n\ncount = 1\nwhile count &lt;= 5:\n    print(count)\n    count += 1\n\n1\n2\n3\n4\n5\n\n\n\nword = 'thud'\nfor letter in word:\n    print(letter)\n\nt\nh\nu\nd\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        break # Ends the loop before it can finish fully\n    print(letter)\n\nt\nh\n\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        continue # Skips over the print() function for 'u'\n    print(letter)\n\nt\nh\nd"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#list-comprehension",
+    "href": "posts/python_basics/python_basics_4&5.html#list-comprehension",
+    "title": "Python Basics",
+    "section": "List Comprehension",
+    "text": "List Comprehension\nA way of creating or filtering list values using conditions\n\nSyntax: listname_new = [ _ for _ in listname_old if ‘condition’ ]\n\n\nnumbers = list(range(1, 21))\nprint(numbers)\n\nevens = [num for num in numbers if num % 2 == 0]\nprint(evens)\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#dictionary-comprehension",
+    "href": "posts/python_basics/python_basics_4&5.html#dictionary-comprehension",
+    "title": "Python Basics",
+    "section": "Dictionary Comprehension",
+    "text": "Dictionary Comprehension\nA way of creating or filtering dictionary keys / values using conditions\n\nSyntax: dictname_new = { k:v for k, v in dictname_old if ‘condition’ }\n\n\n# Filtering\nmy_dict = {'a': 1, 'b': 2, 'c': 3, 'd': 4}\nfiltered_dict = {k: v for k, v in my_dict.items() if v != 2}\nprint(filtered_dict)\n\n# Swapping Values\noriginal_dict = {'a': 1, 'b': 2, 'c': 3}\nswapped_dict = {v: k for k, v in original_dict.items()}\nprint(swapped_dict)\n\n{'a': 1, 'c': 3, 'd': 4}\n{1: 'a', 2: 'b', 3: 'c'}"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#list-dictionary-modification",
+    "href": "posts/python_basics/python_basics_4&5.html#list-dictionary-modification",
+    "title": "Python Basics",
+    "section": "List / Dictionary Modification",
+    "text": "List / Dictionary Modification\nA method (.__) can be used to modify certain aspects of lists and dictionaries\nLists\n\nlist.append(): Add a new item to the end of the list\nlist. remove(): Remove the FIRST occurrence of the specified value\ndel list[]: Deletes a list’s values by index rather than value\n\nDictionaries:\n\ndict.update({}): Add a new key-value pair or change an existing pair\ndel dict[]: Deletes a dictionary’s key-value pair based on the specified key"
+  },
+  {
+    "objectID": "posts/python_basics/python_basics_4&5.html#try-except",
+    "href": "posts/python_basics/python_basics_4&5.html#try-except",
+    "title": "Python Basics",
+    "section": "Try-Except",
+    "text": "Try-Except\nTry-Except code blocks tries to run a block of code, and if an error is raised from attempting to run that code, then an exception is raised instead that is specified by the user.\nFor example:\n\neg_list = [1, 2, 3, 4, 5, 6]\nposition = 9\ntry:\n  print(eg_list[position])\nexcept:\n  print(f\"Invalid position. Expected a value between 0 and {len(eg_list)-1} but got '{position}' instead.\")\n\nInvalid position. Expected a value between 0 and 5 but got '9' instead."
   }
 ]
