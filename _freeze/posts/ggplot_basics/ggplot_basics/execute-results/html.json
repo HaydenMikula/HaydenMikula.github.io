@@ -1,0 +1,17 @@
+{
+  "hash": "969a4ed3fad06212c73065ad15d37d89",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"ggplot basics\"\nformat: html\ndate: 2025-02-18\ncategories: [R, ggplot]\nimage: R_image.png\n\nexecute: \n  warning: false\n  message: false\n\ntoc: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n:::\n\n\n\n\n### Aesthetic Mappings\n\nIn ggplot, there are certain aesthetics that can be mapped to the data of a visualization. Some of these aesthetics are:\n\n- Size (in millimeters)\n- Shape (from 0 to 25, see below)\n- Color\n- Fill\n- Alpha Transparency (from 0 to 1)\n\n![](shapes.png)\n\nAesthetics can be mapped uniformly to all data, or split up according to certain categorical observations that exist within the data set.\n\nThis applies to all aesthetic values that can be altered.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Uniform\nggplot(data = mpg, aes(x = hwy,\n                       y = displ)) +\n  geom_point(color = \"blue\")\n```\n\n::: {.cell-output-display}\n![](ggplot_basics_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Split\nggplot(data = mpg, aes(x = hwy,\n                       y = displ,\n                       color = class)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](ggplot_basics_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "ggplot_basics_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

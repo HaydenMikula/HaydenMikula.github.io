@@ -1,0 +1,97 @@
+---
+title: "ggplot basics"
+format: html
+date: 2025-02-18
+categories: [R, ggplot]
+image: R_image.png
+
+execute: 
+  warning: false
+  message: false
+
+toc: true
+---
+```{r}
+library(tidyverse)
+```
+
+
+### Aesthetic Mappings
+
+In ggplot, there are certain aesthetics that can be mapped to the data of a visualization. Some of these aesthetics are:
+
+- Size (in millimeters)
+- Shape (from 0 to 25, see below)
+- Color
+- Fill
+- Alpha Transparency (from 0 to 1)
+
+![](shapes.png)
+
+Aesthetics can be mapped uniformly to all data, or split up according to certain categorical observations that exist within the data set.
+
+This applies to all aesthetic values that can be altered.
+
+```{r}
+# Uniform
+ggplot(data = mpg, aes(x = hwy,
+                       y = displ)) +
+  geom_point(color = "blue")
+```
+
+```{r}
+# Split
+ggplot(data = mpg, aes(x = hwy,
+                       y = displ,
+                       color = class)) +
+  geom_point()
+```
+
+
+### Facet Wrapping
+
+To split our visualization by a certain categorical variable, we can use facet_wrap(~var)
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) + 
+  facet_wrap(~class)
+```
+
+Similarly, we can split a visualization across 2 variables using facet_grid(var1~var2)
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .5) + 
+  facet_grid(drv ~ cyl)
+```
+
+### Geometric Objects
+
+Using the different kinds of geom_*() functions, we can visualize data in multiple ways
+
+Examples of geom_*() functions:
+
+- geom_bar(): Bar Chart
+- geom_histogram(): Histogram
+- geom_line(): Line Graph
+- geom_boxplot(): Box Plot
+- geom_point(): Scatterplot
+- geom_smooth(): Fitted Line (with error range)
+
+Multiple of each geom_*() can be used in a visualization to represent data differently
+
+```{r}
+
+```
+
+
+
+### Statistical Transformations
+
