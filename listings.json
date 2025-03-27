@@ -2,6 +2,7 @@
   {
     "listing": "/blog-listing.html",
     "items": [
+      "/posts/ice_cream/ice_cream_blog.html",
       "/posts/spotify_analysis/spotify_analysis.html",
       "/posts/ggplot_basics/ggplot_basics.html",
       "/posts/python_basics/python_basics_4&5.html",
