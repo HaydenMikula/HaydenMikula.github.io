@@ -1,5 +1,5 @@
 ---
-title: "Ice Cream Blog"
+title: "Ben & Jerry's Blog"
 format: html
 date: 2025-03-24
 categories: [R, ggplot, Ice Cream]
