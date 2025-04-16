@@ -2,6 +2,7 @@
   {
     "listing": "/blog-listing.html",
     "items": [
+      "/posts/dog_analysis/dog_breed_blog_post.html",
       "/posts/ice_cream/ice_cream_blog.html",
       "/posts/spotify_analysis/spotify_analysis.html",
       "/posts/ggplot_basics/ggplot_basics.html",
