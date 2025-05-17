@@ -1,0 +1,13 @@
+---
+title: "SHINY APP 1"
+date: 2025-05-05
+---
+
+```{=html}
+<div style="text-align: center; margin: 1em 0;">
+  <iframe
+    src="https://github.com/HaydenMikula/shiny-00-old-faithful.git"
+    style="width: 800px; height: 800px; border: none;"
+  ></iframe>
+</div>
+```
