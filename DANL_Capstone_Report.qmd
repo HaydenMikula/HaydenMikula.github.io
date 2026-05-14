@@ -28,7 +28,7 @@ options(scipen = 999)
 
 ```{r, include=FALSE}
 quitrates <- read_csv("DANL_Capstone_Files/Industry_Quit_Rates.csv")
-# benefits <- read_csv("DANL_Capstone_Files/employee-benefits-in-the-united-states-dataset.csv")
+benefits <- read_csv("employee-benefits-in-the-united-states-dataset.csv")
 wages <- read_csv("DANL_Capstone_Files/Industry_Annual_Wages.csv")
 union <- read_csv("DANL_Capstone_Files/Industry_Union_Rates.csv")
 
