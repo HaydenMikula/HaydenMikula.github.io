@@ -1,0 +1,396 @@
+---
+title: "Impact of Employee Benefits on U.S. Labor Turnover Rates"
+subtitle: "DANL 410 Capstone Report"
+format:
+  html:
+    toc: True
+author: Hayden Mikula
+date: 05-13-2026
+execute:
+  warning: False
+---
+
+```{r Package Loading, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(stargazer)
+library(stats)
+library(scales)
+library(reshape2)
+library(factoextra)
+library(fpc)
+library(ggrepel)
+library(mice)
+library(kableExtra)
+
+options(scipen = 999)
+```
+
+```{r, include=FALSE}
+quitrates <- read_csv("DANL_Capstone_Files/Industry_Quit_Rates.csv")
+# benefits <- read_csv("DANL_Capstone_Files/employee-benefits-in-the-united-states-dataset.csv")
+wages <- read_csv("DANL_Capstone_Files/Industry_Annual_Wages.csv")
+union <- read_csv("DANL_Capstone_Files/Industry_Union_Rates.csv")
+
+wages$avg_yr <- round(wages$avg_yr)
+
+quitrates$Year <- factor(quitrates$Year)
+
+benefits <- benefits |> 
+  mutate(Estimate = as.numeric(Estimate),
+         Provision = factor(tolower(Provision)),
+         Year = factor(Year),
+         Industry = factor(Industry),
+         Ownership = factor(Ownership),
+         `Occupation code` = as.numeric(`Occupation code`))
+
+```
+
+```{r, include=FALSE}
+
+bef <- c("access to defined benefit plans", "access to defined contribution plans",
+         "access to paid holidays", "access to life insurance plans",
+         "access to long-term disability plans", "access to medical care benefits",
+         "access to nonproduction bonuses", "access to paid personal leave",
+         "access to all retirement benefits", "access to short-term disability plans",
+         "access to paid sick leave", "access to paid vacation",
+         "access to medical care benefits")
+aft <- c("defined benefit", "defined contribution",
+         "holiday", "life insurance",
+         "long-term disability insurance", "medicare",
+         "nonproduction bonuses", "personal leave",
+         "retirement and savings", "short-term disability insurance",
+         "sick leave", "vacation",
+         "medicare")
+
+for (i in seq(1:length(bef))) {
+  benefits$Provision <- str_replace(benefits$Provision, bef[i], aft[i])
+}
+
+```
+
+```{r, include=FALSE}
+
+benefits_df <- data.frame(benefits)
+quitrates_df <- data.frame(quitrates)
+
+benefits_df$Industry.code <- as.character(benefits_df$Industry.code)
+quitrates_df$Industry.code <- as.character(quitrates_df$Industry.code)
+
+benefits_df_filt <- benefits_df |> 
+  filter(Year %in% c(2020, 2021, 2022, 2023, 2024, 2025),
+         Characteristic.category == "All workers",
+         Occupation.code == 0,
+         Datatype == "Access rate",
+         Provision %in% aft,
+         !is.na(Series.ID),
+         Industry != "All industries")
+
+merge_df <- merge(benefits_df_filt, quitrates_df, by = c("Industry.code", "Year"))
+
+missing_years_df <- merge_df |> group_by(Series.ID) |> summarise(n = n()) |> filter(n != 6)
+df_clean <- merge_df |> anti_join(missing_years_df, by = "Series.ID")
+df_clean <- merge(df_clean, wages |> select(Industry, Year, avg_yr), by = c("Industry", "Year"))
+df_clean <- merge(df_clean, union, by = c("Industry", "Year"))
+
+df_clean <- df_clean |> mutate(Estimate = as.numeric(Estimate),
+                               Provision = factor(Provision),
+                               Year = factor(Year),
+                               Industry = factor(Industry)) |> 
+  rename(quits_rate = industry_QR.QL)
+
+```
+
+```{r, include=FALSE}
+df_pivot <- df_clean |> 
+  filter(Ownership.code == 2) |> 
+  select(Provision, Industry, Year, Estimate, quits_rate, avg_yr, union_rate) |> 
+  pivot_wider(names_from = Provision, values_from = Estimate)
+
+colnames(df_pivot) <- str_replace_all(colnames(df_pivot), " ", "_")
+colnames(df_pivot) <- str_replace_all(colnames(df_pivot), "-", "_")
+
+cols <- colnames(df_pivot |> select(-Industry, -Year))
+
+df_pivot[paste0("miss_", cols)] <- lapply(df_pivot[cols], function(x) as.integer(is.na(x)))
+
+meth <- make.method(df_pivot |> select(-Industry, -Year))
+pred <- make.predictorMatrix(df_pivot |> select(-Industry, -Year))
+
+meth[paste0("miss_", cols)] <- ""
+pred[cols, paste0("miss_", cols)] <- 1
+
+imp <- mice(data = df_pivot, method = meth, predictorMatrix = pred, m = 5, seed = 999)
+
+
+vars <- cols[!str_detect(cols, "miss_")][-(1:3)]
+
+full_imp_df <- complete(imp, action = "long", include = TRUE)
+full_imp_df <- full_imp_df |> select(!starts_with("miss_"))
+full_imp_df[vars] <- scale(full_imp_df[vars])
+
+indexed_df <- full_imp_df |> rowwise() |> 
+  mutate(Leave_Index = mean(c(holiday, vacation, sick_leave, personal_leave)),
+         Retirement_Index = mean(c(defined_benefit, defined_contribution, retirement_and_savings)),
+         Insurance_Index = mean(c(long_term_disability_insurance, short_term_disability_insurance, life_insurance, medicare))) |> rename("annual_wage" = "avg_yr") |> ungroup()
+
+imp2 <- as.mids(indexed_df)
+
+dummy1 <- lm(data = complete(imp2, 1), quits_rate ~ (Leave_Index + Retirement_Index + Insurance_Index):Industry + log(annual_wage) + union_rate + Year)
+
+lm1 <- with(imp2, lm(quits_rate ~ (Leave_Index + Retirement_Index + Insurance_Index):Industry + log(annual_wage) + union_rate + Year))
+
+pool1 <- pool(lm1)
+
+s1 <- summary(pool1)
+```
+
+```{r, include=FALSE}
+
+df_grouped <- complete(imp2, 1) |> select(!ends_with("Index"))
+
+vars_to_use <- colnames(df_grouped |> select(-Industry, -quits_rate, -annual_wage, -Year, -union_rate))
+
+# Scale to mean 0, sd 1; stores center and scale attributes
+pmatrix <- scale(df_grouped[, vars_to_use])
+pcenter <- attr(pmatrix, "scaled:center")
+pscale  <- attr(pmatrix, "scaled:scale")
+
+# Convenience function to strip scale attributes
+rm_scales <- function(scaled_matrix) {
+  attr(scaled_matrix, "scaled:center") <- NULL
+  attr(scaled_matrix, "scaled:scale")  <- NULL
+  scaled_matrix
+}
+
+pmatrix <- rm_scales(pmatrix)
+
+rownames(pmatrix) <- df_grouped$Industry
+dist_mat <- dist(pmatrix, method = "euclidean")
+p_fit <- hclust(dist_mat, method = "ward.D")
+
+groups_hc <- cutree(p_fit, k = 5)
+```
+
+```{r, include=FALSE}
+princ   <- prcomp(pmatrix)
+nComp   <- 1
+project <- predict(object = princ, newdata = pmatrix)[, 1:nComp]
+project_df <- as.data.frame(project) |> rename("PC1" = "project")
+
+project_plus <- cbind(
+  project_df,
+  cluster = as.factor(groups_hc),
+  Industry = df_grouped$Industry,
+  Year = df_grouped$Year,
+  annual_wage = df_grouped$annual_wage,
+  union_rate = df_grouped$union_rate,
+  quits_rate = df_grouped$quits_rate
+)
+
+```
+
+```{r, include=FALSE}
+# in appendix
+loadings_df <- princ$rotation |> 
+  as.data.frame() |> 
+  rownames_to_column("variable") |> 
+  mutate(variable = str_remove(variable, "Estimate_")) |> 
+  select(variable, PC1) |> arrange(-PC1)
+
+lm_PC <- lm(data = project_plus, quits_rate ~ PC1*Industry + log(annual_wage) + union_rate + Year)
+```
+
+# Introduction
+
+## Motivation & Context
+
+Employee turnover can be detrimental to an organization's ability to carry out it's objectives. The general consensus is that it costs around 6-9 months of an employee's salary in advertising, interviewing, and retraining costs to replace them, but the opportunity cost of losing organizational talent can spread past this. Errors in paperwork, declines in customer satisfaction, and gaps in team dynamics from a replacement's potential lack of experience also contribute to the expenses an organization accrues from quitting, and as such it is essential to organizational stability and worker satisfaction that quitting is minimized where possible. Across many major industries, employers use non-wage benefits not only to attract talent but also to retain employees in increasingly competitive labor markets, and while wages remain a major factor in employment decisions, employers have recognized that this non-wage compensation — such as health insurance, retirement plans, paid leave, and wellness programs—can significantly influence whether employees choose to remain with an organization. As such, employee quitting reduction has gained a following in Economics and Data Analysis, particularly through the lens of these employee benefits.
+
+## Research Question
+
+This paper, like others discussing this topic, is primarily concerned with the access to (or incidence of) a benefit that is provided.
+
+Because employee retention remains a critical issue for employers nationwide, understanding which benefits are most strongly associated with lower turnover rates has important implications for both businesses and policymakers. Examining patterns across industries can help identify whether specific benefits consistently contribute to workforce stability and whether affordability and accessibility affect their effectiveness. This leads to the research question: What kinds of benefits are more strongly associated with lower labor turnover across major industries in the U.S.?
+
+## Data & Method Preview
+
+This analysis is based on various datasets from the Bureau of Labor Statistics, namely the Employee Benefits Survey (EBS) and the Job Openings and Labor Turnover Survey (JOLTS), focusing on Private-sector data collected between 2020 and 2025. Each observation within the dataset represents benefit data for one U.S. Industry classified according to the North American Industry Classification System (NAICS). As these individual datasets do not cover the exact same industries, only the shared industries and benefit types are utilized for analysis.
+
+Given the tendency for organizations to package together benefits according to complementary benefit types & individual employee needs, high levels of multicollinearity is expected between benefits. In an attempt to combat this, this study emphasizes techniques such as Feature Engineering and Principal Component Analysis to to reduce dimensionality and the disproportionate effect of correlated benefits on regression outputs, with the caveat of giving up interpretability of individual benefits' effects. Analysis will focus on Clustering, along with Two-Way Fixed Effect models for Linear Regression and Principal Component Regression, though this paper will follow more of an inferential structure rather than a predictive one.
+
+## Main Findings & Contribution
+
+This analysis shows the importance of aligning organizational outcomes, as well as employee environment, to non-wage benefit options, and tentatively coroborates the benefit-wage trade-off through its effect on low annual average wages across industries.
+
+<br>
+
+# Background & Related Literature
+
+## Topic Background
+
+## Related Literature or Prior Evidence
+
+To further supplement the methodology behind Access as a measure of benefits, a paper by José M. de la Torre-Rui et al. (2016) found that, when evaluating benefit satisfaction within the 3 dimensions of benefit level, benefit determination, and benefit administration, all 3 were positively correlated with ideas of Organizational Commitment, along with perceptions of benefit determination and administration being negatively associated with surveyed turnover intention / disposition. Benefit determination is inherently related to benefit availability, and is thus a feasible metric for firms to adjust as needed. As José M. de la Torre-Rui states, "based on procedural justice, the degree of benefit choice offered to employees has been shown to be related to benefit determination satisfaction". Conducted in Spain, a country that maintains a lesser precedent for employee benefits, this study reinforces that compensation satisfaction's relationship with voluntary turnover is intrinsically tied to how an employee's unique cultural context affects their perception of their working organization - and how their satisfaction/dissatisfaction with organizational transparency and options when it comes to benefits influences tentative tenure outcomes.
+
+Research carried out by Paige Ouimet and Geoffrey Tate (2023) detailed the trade-off between generous benefits and the split of high-low wage workers on the firm-level. Higher benefit "level and determination" correlates with an attraction of high-wage workers to firms over time and, as a result of the rise in non-discrimination policies surrounding benefit plans, firms tend to choose to standardize benefits to cater towards higher wage, more skilled workers rather than low-wage workers. If applied on the industry-level, it stands to reason that this trade-off would persist - industries with lower annual wage estimates should generally imply a higher effectiveness of benefit access in offsetting voluntary turnover.
+
+## Gap & Contribution
+
+One underutilized facet of benefit analysis is the determination of how the impact of benefits vary across industries - many studies tend to include industry fixed effects, but few consider whether industry interactions could shine light on overall benefits trends. This study intends to tackle this facet while limiting benefit multicollinearity.
+
+<br>
+
+# Data
+
+## Data Source(s)
+
+As previously mentioned, our dataset revolves around the EBS and JOLTS surveys from the Bureau of Labor Statistics. The Employee Benefits survey produces data regarding "the incidence ... and provisions of selected employee benefit plans", splitting data availability across different occupations, industries, geographic areas, full/part time work, establishment size, and average wage category, but unfortunately these demographics are mutually exclusive when considered within the full dataset (for example, the dataset doesn't consider benefit access by industries with businesses within different U.S. census areas - only across different industries). The Job Openings and Labor Turnover Survey covers the production of monthly and annual estimates of job openings, hires, and separations, with similar demographics classifications as the EBS. However, in this case we are concerned primarily with the measurement for the quits portion of overall turnover. Additional datasets were created by categorizing benefits into specific Indexes and incorporating Principal Component Analysis, both of which serve to hopefully capture variances, reduce multicollinearity, and improve regression model stability.
+
+## Unit of Observation
+
+Each row in the primary dataset represents a panel format observation on one Industry during a given Year.
+
+## Sample & Scope
+
+Because the dataset does not cover cross-classification reporting on an individual firm level, but rather on aggregate national level averages, it becomes difficult to control for firm differences and employee demographics in estimating the effects of benefits. In total, the dataset reports 66 rows (11 industries, 6 years) across 12 benefits columns. From the larger EBS dataset, only the benefits that were shared between it and the ECEC were considered, and only for industries with a Private-sector. This is because the private sector contains businesses which are more likely to be responsive to changes in employee needs (i.e. non-standardized benefit practices), and comprises a larger portion of the U.S.
+
+## Key Variables
+
+The primary outcome variable for regression analysis is an industry's labor turnover rate, particularly the proportion made up from quitting. Predictors / Controls include industry controls like annual wage and union membership rate, along with Access estimates for 12 benefits (defined benefit, defined contribution, long-term disability insurance, life insurance, paid holiday, sick leave, medicare, personal leave, retirement and savings, paid vacation, short-term disability insurance, and non-production bonuses) and 11 industries ("Construction", "Education and health services", "Finance and insurance", "Health care and social assistance", "Information", "Leisure and hospitality", "Manufacturing", "Other services (except public administration)", "Real estate and rental and leasing", "Trade, transportation, and utilities", and "Wholesale trade"). For feature engineering, benefits with shared characteristics which are highly correlated are averaged into specific "Indexes" - a Retirement Index (composed of defined benefit, defined contribution, and retirement and savings), Insurance Index (composed of short-term disability insurance, long-term disability insurance, life insurance, and medicare), and Leave Index (composed of paid holiday, paid vacation, personal leave, and sick leave).
+
+Our benefit access dataset produced 1 primary principal component (85.3% of variation covered). Significant loadings for PC1 (absolute value of loading \> 0.25) includes all benefits except for defined benefit. Because of this, PC1 can be used as an impromptu "significant benefits" index to compare which industries' benefit distribution most contributes to lower turnover, even if individual / segment effects for benefits aren't able to be reported.
+
+```{r, echo=FALSE}
+loadings_df |> 
+  arrange(desc(PC1)) |> 
+  filter(PC1 > 0.25) |> 
+  select(variable, PC1) |> kbl(caption = "Table 1: Principal Component Loadings") |> kable_classic_2(full_width = F, font_size = 15)
+```
+
+## Data Quality & Limitations
+
+In terms of limitations stemming from the main dataset, the number of observations is quite low, and ended up with some non-random missing data points from industries not having associated benefit access rates listed. Even considering that it focuses on aggregate estimates, panel data is expected to provide much more variability in its observations, and a significant increase in degrees of freedom. In an attempt to be able to utilize industry-wise interaction terms in our regression analysis given the data's missing values, Mean Imputation by Chained Equations (MICE) is used to estimate benefit access where it would ordinarily be omitted, with missingness dummy indicators to inform the model that the missing values are Missing Not At Random (MNAR). The dataset is also, as previously mentioned, limited by its omitting of impactful control metrics, such as firm size or census region, which would help to improve the accuracy of regressed predictor-outcome relationships.
+
+<br>
+
+# Empirical Strategy & Methods
+
+## Empirical Approach
+
+Our primary methods of analysis focus on Linear Regression, utilizing multiple models for our feature engineered and Principal Component datasets. Both regression types are Two-Way Fixed Effects models, as we are concerned with how our predictors change across both unit-specific and time-specific factors. Using both feature engineering and PCA individually improves overall interpretability by allowing us to see the effect of benefits both from grouped characteristics and from and industry's composition of their most representative benefits.
+
+## Model Specification / Analytical Framework
+
+Our empirical models are as follows:
+
+Indexed Regression Model(s):
+
+$QuitsRate_{i,t} = \beta_1Index_{i,t} + \beta_2Industry_{i} + \beta_3(Index_{i,t} \times Industry_{i}) + \gamma X_{i,t} + \alpha_{i} + \delta_{t} + \epsilon_{i,t}$
+
+PCA Model:
+
+$QuitsRate_{i,t} = \beta_1PC1_{i,t} + \beta_2Industry_{i} + \beta_3(PC1_{i,t} \times Industry_{i}) + \gamma X_{i,t} + \alpha_{i} + \delta_{t} + \epsilon_{i,t}$
+
+Where $X_{i,t}$ represents a vector of industry control variables, $\gamma$ represents the vector of coefficients for these control variables, $\alpha$ captures the industry-wise fixed effect, $\delta$ captures the time-wise fixed effect, and $\epsilon$ is the error term that captures unobserved heterogeneity.
+
+## Interpretation & Identification
+
+Regarding how the models are interpreted, the indexed regression models' effects are described as, all else being equal, a one-standard-deviation increase in a benefit access predictor correlating with $\beta$ percentage point change in quits_rate, as the MICE output is standardized and subsequently pooled to produce said output, though practically interpretation will center around the magnitude and direction of a benefit's relationship with quits_rate in relation to other industries rather than a specific change in quits_rate. This is because of remaining multicollinearity and omitted firm demographics. The principal component regression is interpreted as, all else being equal, a one-unit increase in a principal component correlating with a $\beta$ percentage point change in quits_rate. The aim is to provide descriptive and correlational evidence for benefit effect on quits.
+
+<br>
+
+# Results
+
+## Main Empirical Findings & Interpretation
+
+Beginning with the results of our benefit index regressions shown in Table 2, the Paid Leave index is most associated with lower quitting rates when being considered through the Finance & insurance (-5.659) and Information (-5.2) industries. The Retirement index is most beneficial to the Leisure & Hospitality (-4.271), Trade, transportation, & utilities (-3.428), and Wholesale trade (-3.499) industries. The Insurance index is most beneficial to the Trade, Transportation, & Utilities (-2.921) and Manufacturing (-2.338) industries. Comparing beta coefficients for the Leave Index, Retirement Index, and Insurance Index for each individual industry, there are many instances where they vary wildly, which shows the importance of choosing an acutely representative subset of benefits to provide to employees.
+
+Using Figure 1, we visualize the prevalence of benefits through each industry's principal component score, and use this to inform the accuracy of what Table 1 determined to be each industry's most impactful benefits index, arranged more presentably in Table 3. Going from highest to lowest PC1 scores: Cluster 3, composed of 2 business-serving industries, both value paid leave benefits - high stress work environments such as that of tech occupations would be inclined to choose health benefits when non-compensatory benefits like mental health evaluations or work acknowledgement are available, but because these aren't included in out dataset, benefits that enable personal fulfillment are prioritized. Cluster 5's industries have a couple differing qualities - 1 goods-producing, and 1 business-serving - along with their best indexes differing between the two. However, only manufacturing's index aligns with its the goals and characteristics; Manufacturing often contains physical labor, necessitating health insurance coverage to attract and keep their workforce. Generally Wholesale Trade would follow suit as it is also a laborious industry depending on the occupation. Cluster 2 is made up of a wide range of industries, primarily health services and hybrid service industries (i.e. services which have significant markets for both individual and business clients). Trade, transportation & utilities' low annual wage necessitates deferred compensation in the form of retirement plans, and while initially Real estate, rental, & leasing seems more like an insurance-focused industry, looking at Table 1 again shows that the Insurance_Index is also significant. Lastly, Clusters 1 and 4 both are essentially solitary industries groupings-wise; Construction values the opportunity to live securely after a physically demanding, but relatively low risk career, whereas Leisure & Hospitality follows a similar stance as Trade, transportation & utilities. Low wages, high unionization rates, and high turnover shows a need for people in this industry to defer additional compensation. Considering the Principal Component Regression output from Table 4, we see that the benefit distribution that is most associated with lower turnover is that of the Manufacturing industry (-1.371), followed by Leisure & hospitality (-1.012). Again though, because the dataset for our primary analyses omits employee demographics, workplace conditions, and other non-compensatory benefits, it is implied that the PCR only captures benefit access effect on turnover in relation to other industries, rather than estimating an increase/decrease of quits_rate based off a given grouping of benefits.
+
+## Descriptive Evidence and Model Results
+
+```{r, echo=FALSE, warning=FALSE}
+# Table 2
+stargazer(dummy1,
+          coef = list(s1$estimate),
+          se   = list(s1$std.error),
+          p    = list(s1$p.value),
+          type = "text",
+          column.labels = c("Two-Way FE"),
+          title = "Table 2: Benefit Index Effect on Labor Quits Rate by Industry")
+```
+
+<br>
+
+```{r, echo=FALSE}
+# Table 3 - Most Impactful Benefits Index on Turnover Rate Reduction by Industry
+s1_df <- s1 |> as.data.frame() |> filter(str_detect(term, "Industry"))
+
+s1_df |> select(term, estimate) |> 
+  separate(col = term, sep = ":Industry", into = c("Index", "Industry")) |> 
+  group_by(Industry) |> slice_min(estimate) |> arrange(estimate) |> kbl(caption = "Table 3: Most Influential Benefit Index per Industry") |> kable_classic_2(full_width = F, font_size = 15)
+```
+
+<br>
+
+```{r, echo=FALSE}
+# Figure 1
+project_plus |> mutate(cluster = as.integer(cluster)) |> group_by(Industry) |> 
+         summarise(across(-Year, mean)) |> mutate(cluster = factor(cluster)) |> 
+  ggplot(aes(x = PC1, y = reorder(Industry, PC1), color = cluster, label = Industry)) +
+  geom_point(size = 2.5) +
+  geom_text_repel() +
+  labs(title = "Figure 1:",
+       subtitle = "Principal Component Plot - Industry Scores",
+       color = "Cluster") +
+  theme_bw()
+```
+
+<br>
+
+```{r, warning=FALSE, echo=FALSE}
+# Table 4
+stargazer(lm_PC, type = "text",
+          keep = c("annual_wage",
+                   "union_rate",
+                   ":",
+                   "PC1",
+                   "Const"),
+          title = "Table 4: Principal Component Regression Output by Industry")
+
+```
+
+## Connection to Research Question
+
+Regarding the initial research question: This analysis presents a basic framework for employee benefit analysis, particularly in their effect on voluntary turnover, with the intention of minimizing the multicollinear nature of benefits. While we cannot tease out the effect of individual benefits here (perhaps it is impossible to), effective groupings of benefits that explain chunks of an industry's unobserved heterogeneity and omitted variable bias help to ascertain a loose estimate of the kinds of benefits with which their prevalence most contributes to lower quitting rates.
+
+<br>
+
+# Discussion & Implications
+
+## Interpretation of Findings
+
+The results of this study can influence organizational dispositions towards leveraging untapped benefits to reduce costs associated with labor turnover, based on firm relation to macro industry characteristics. Findings seem to support the theory behind the benefit-wage trade-off, and emphasize the importance of a relevant benefits plan regardless of benefits standardization as per nondiscriminatory policy in the maintenance of employee compensation satisfaction for their given working context.
+
+## Economic, Business, Policy, or Social Implications
+
+Leveraging non-wage compensation to lower turnover is an effective mitigator of operational risk and organizational volatility - lessening customer dissatisfaction, institutional knowledge loss, worker satisfaction, and informing budgeting decisions to increase standing in competitive labor markets and industries. Being knowledgable of an industry's most relevant and impactful benefits could help a small company expand their enterprise with reasonable confidence that people will be receptive to what they have to offer, drawing in talent while increasing commitment to their organization.
+
+## Recommendation or Decision Support
+
+Particularly in areas of work where wages can range on the lower side, supplemental benefits packages should be utilized by businesses where possible, with an eye on the kinds of benefits that employees in that industry would prefer. In addition to this, knowing how each industry ranks against one another in terms of benefit access effect on quits and union membership could inform bargaining structure for benefits within unionized sectors.
+
+<br>
+
+# Conclusion
+
+Employee turnover can be detrimental to an organization's ability to carry out it's objectives. By determining which kinds of benefits are more strongly associated with lower labor turnover, we provide a model that serves as a basic framework for recognizing relevant characteristics of industries and benefits which influence whether employees choose to remain with an organization. Through a Two-Way Fixed Effect empirical model comprised of data from various BLS sources including the EBS and JOLTS surveys, our analysis shows the importance of aligning benefit options with employee needs and industry tendencies, and maintains the benefit-wage trade-off through its effect on low annual average wages across industries. For industries that experience this trade-off, benefits packages which complement existing gaps in employee needs should be utilized by firms in order to maintain employee perception of organizational and compensatory satisfaction.
+
+# References
+
+Bahn, Kate, and Carmen Sanchez Cumming. Improving U.S. Labor Standards and the Quality of Jobs to Reduce the Costs of Employee Turnover to U.S. Companies. Dec. 2020.
+
+de la Torre-Ruiz, José M. , et al. Employees Are Satisfied with Their Benefits, but so What? The Consequences of Benefit Satisfaction on Employees’ Organizational Commitment and Turnover Intentions. 2016, digibug.ugr.es/bitstream/handle/10481/86895/de%20la%20Torre-Ruiz%20et%20al.,%202019%20IJHRM%20(Accepted%20version).pdf;jsessionid=170F6490251E343E390C060BFEA491D8?sequence=1. Accessed 13 May 2026.
+
+Ouimet, Paige, and Geoffrey Tate. Firms with Benefits? Nonwage Compensation and Implications for Firms and Labor Markets. July 2023, https://doi.org/10.2139/ssrn.4112463. Accessed 13 May 2026.
