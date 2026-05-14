@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Hayden Mikula">
+<meta name="dcterms.date" content="2026-05-13">
+
+<title>Impact of Employee Benefits on U.S. Labor Turnover Rates – Hayden Mikula</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e5c0da90bde570b7566f6217e7c63da7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-cea25e2310d9ee8b66de880732a0fbab.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e5c0da90bde570b7566f6217e7c63da7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-37f0f98d7d34ab9960664c5b17b9a505.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6f65542d7083247f672902ebdd9d87f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-37f0f98d7d34ab9960664c5b17b9a505.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Hayden Mikula</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./blog-listing.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./danl-310-quarto-r.html"> 
+<span class="menu-text">R-Basics</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python-data-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Python Data Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-python-data-analysis">    
+        <li>
+    <a class="dropdown-item" href="./pandas_basics.html">
+ <span class="dropdown-text">Pandas Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./seaborn_basics.html">
+ <span class="dropdown-text">Seaborn Basics</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./danl_210_hayden_mikula_stock_esg.html"> 
+<span class="menu-text">DANL 210 Final Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./DANL_Capstone_Report.html" aria-current="page"> 
+<span class="menu-text">DANL 410 Capstone Report</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#motivation-context" id="toc-motivation-context" class="nav-link" data-scroll-target="#motivation-context">Motivation &amp; Context</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question</a></li>
+  <li><a href="#data-method-preview" id="toc-data-method-preview" class="nav-link" data-scroll-target="#data-method-preview">Data &amp; Method Preview</a></li>
+  <li><a href="#main-findings-contribution" id="toc-main-findings-contribution" class="nav-link" data-scroll-target="#main-findings-contribution">Main Findings &amp; Contribution</a></li>
+  </ul></li>
+  <li><a href="#background-related-literature" id="toc-background-related-literature" class="nav-link" data-scroll-target="#background-related-literature">Background &amp; Related Literature</a>
+  <ul class="collapse">
+  <li><a href="#topic-background" id="toc-topic-background" class="nav-link" data-scroll-target="#topic-background">Topic Background</a></li>
+  <li><a href="#related-literature-or-prior-evidence" id="toc-related-literature-or-prior-evidence" class="nav-link" data-scroll-target="#related-literature-or-prior-evidence">Related Literature or Prior Evidence</a></li>
+  <li><a href="#gap-contribution" id="toc-gap-contribution" class="nav-link" data-scroll-target="#gap-contribution">Gap &amp; Contribution</a></li>
+  </ul></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Source(s)</a></li>
+  <li><a href="#unit-of-observation" id="toc-unit-of-observation" class="nav-link" data-scroll-target="#unit-of-observation">Unit of Observation</a></li>
+  <li><a href="#sample-scope" id="toc-sample-scope" class="nav-link" data-scroll-target="#sample-scope">Sample &amp; Scope</a></li>
+  <li><a href="#key-variables" id="toc-key-variables" class="nav-link" data-scroll-target="#key-variables">Key Variables</a></li>
+  <li><a href="#data-quality-limitations" id="toc-data-quality-limitations" class="nav-link" data-scroll-target="#data-quality-limitations">Data Quality &amp; Limitations</a></li>
+  </ul></li>
+  <li><a href="#empirical-strategy-methods" id="toc-empirical-strategy-methods" class="nav-link" data-scroll-target="#empirical-strategy-methods">Empirical Strategy &amp; Methods</a>
+  <ul class="collapse">
+  <li><a href="#empirical-approach" id="toc-empirical-approach" class="nav-link" data-scroll-target="#empirical-approach">Empirical Approach</a></li>
+  <li><a href="#model-specification-analytical-framework" id="toc-model-specification-analytical-framework" class="nav-link" data-scroll-target="#model-specification-analytical-framework">Model Specification / Analytical Framework</a></li>
+  <li><a href="#interpretation-identification" id="toc-interpretation-identification" class="nav-link" data-scroll-target="#interpretation-identification">Interpretation &amp; Identification</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#main-empirical-findings-interpretation" id="toc-main-empirical-findings-interpretation" class="nav-link" data-scroll-target="#main-empirical-findings-interpretation">Main Empirical Findings &amp; Interpretation</a></li>
+  <li><a href="#descriptive-evidence-and-model-results" id="toc-descriptive-evidence-and-model-results" class="nav-link" data-scroll-target="#descriptive-evidence-and-model-results">Descriptive Evidence and Model Results</a></li>
+  <li><a href="#connection-to-research-question" id="toc-connection-to-research-question" class="nav-link" data-scroll-target="#connection-to-research-question">Connection to Research Question</a></li>
+  </ul></li>
+  <li><a href="#discussion-implications" id="toc-discussion-implications" class="nav-link" data-scroll-target="#discussion-implications">Discussion &amp; Implications</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-findings" id="toc-interpretation-of-findings" class="nav-link" data-scroll-target="#interpretation-of-findings">Interpretation of Findings</a></li>
+  <li><a href="#economic-business-policy-or-social-implications" id="toc-economic-business-policy-or-social-implications" class="nav-link" data-scroll-target="#economic-business-policy-or-social-implications">Economic, Business, Policy, or Social Implications</a></li>
+  <li><a href="#recommendation-or-decision-support" id="toc-recommendation-or-decision-support" class="nav-link" data-scroll-target="#recommendation-or-decision-support">Recommendation or Decision Support</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Impact of Employee Benefits on U.S. Labor Turnover Rates</h1>
+<p class="subtitle lead">DANL 410 Capstone Report</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Hayden Mikula </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 13, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="motivation-context" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-context">Motivation &amp; Context</h2>
+<p>Employee turnover can be detrimental to an organization’s ability to carry out it’s objectives. The general consensus is that it costs around 6-9 months of an employee’s salary in advertising, interviewing, and retraining costs to replace them, but the opportunity cost of losing organizational talent can spread past this. Errors in paperwork, declines in customer satisfaction, and gaps in team dynamics from a replacement’s potential lack of experience also contribute to the expenses an organization accrues from quitting, and as such it is essential to organizational stability and worker satisfaction that quitting is minimized where possible. Across many major industries, employers use non-wage benefits not only to attract talent but also to retain employees in increasingly competitive labor markets, and while wages remain a major factor in employment decisions, employers have recognized that this non-wage compensation — such as health insurance, retirement plans, paid leave, and wellness programs—can significantly influence whether employees choose to remain with an organization. As such, employee quitting reduction has gained a following in Economics and Data Analysis, particularly through the lens of these employee benefits.</p>
+</section>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research Question</h2>
+<p>This paper, like others discussing this topic, is primarily concerned with the access to (or incidence of) a benefit that is provided.</p>
+<p>Because employee retention remains a critical issue for employers nationwide, understanding which benefits are most strongly associated with lower turnover rates has important implications for both businesses and policymakers. Examining patterns across industries can help identify whether specific benefits consistently contribute to workforce stability and whether affordability and accessibility affect their effectiveness. This leads to the research question: What kinds of benefits are more strongly associated with lower labor turnover across major industries in the U.S.?</p>
+</section>
+<section id="data-method-preview" class="level2">
+<h2 class="anchored" data-anchor-id="data-method-preview">Data &amp; Method Preview</h2>
+<p>This analysis is based on various datasets from the Bureau of Labor Statistics, namely the Employee Benefits Survey (EBS) and the Job Openings and Labor Turnover Survey (JOLTS), focusing on Private-sector data collected between 2020 and 2025. Each observation within the dataset represents benefit data for one U.S. Industry classified according to the North American Industry Classification System (NAICS). As these individual datasets do not cover the exact same industries, only the shared industries and benefit types are utilized for analysis.</p>
+<p>Given the tendency for organizations to package together benefits according to complementary benefit types &amp; individual employee needs, high levels of multicollinearity is expected between benefits. In an attempt to combat this, this study emphasizes techniques such as Feature Engineering and Principal Component Analysis to to reduce dimensionality and the disproportionate effect of correlated benefits on regression outputs, with the caveat of giving up interpretability of individual benefits’ effects. Analysis will focus on Clustering, along with Two-Way Fixed Effect models for Linear Regression and Principal Component Regression, though this paper will follow more of an inferential structure rather than a predictive one.</p>
+</section>
+<section id="main-findings-contribution" class="level2">
+<h2 class="anchored" data-anchor-id="main-findings-contribution">Main Findings &amp; Contribution</h2>
+<p>This analysis shows the importance of aligning organizational outcomes, as well as employee environment, to non-wage benefit options, and tentatively coroborates the benefit-wage trade-off through its effect on low annual average wages across industries.</p>
+<p><br></p>
+</section>
+</section>
+<section id="background-related-literature" class="level1">
+<h1>Background &amp; Related Literature</h1>
+<section id="topic-background" class="level2">
+<h2 class="anchored" data-anchor-id="topic-background">Topic Background</h2>
+</section>
+<section id="related-literature-or-prior-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="related-literature-or-prior-evidence">Related Literature or Prior Evidence</h2>
+<p>To further supplement the methodology behind Access as a measure of benefits, a paper by José M. de la Torre-Rui et al.&nbsp;(2016) found that, when evaluating benefit satisfaction within the 3 dimensions of benefit level, benefit determination, and benefit administration, all 3 were positively correlated with ideas of Organizational Commitment, along with perceptions of benefit determination and administration being negatively associated with surveyed turnover intention / disposition. Benefit determination is inherently related to benefit availability, and is thus a feasible metric for firms to adjust as needed. As José M. de la Torre-Rui states, “based on procedural justice, the degree of benefit choice offered to employees has been shown to be related to benefit determination satisfaction”. Conducted in Spain, a country that maintains a lesser precedent for employee benefits, this study reinforces that compensation satisfaction’s relationship with voluntary turnover is intrinsically tied to how an employee’s unique cultural context affects their perception of their working organization - and how their satisfaction/dissatisfaction with organizational transparency and options when it comes to benefits influences tentative tenure outcomes.</p>
+<p>Research carried out by Paige Ouimet and Geoffrey Tate (2023) detailed the trade-off between generous benefits and the split of high-low wage workers on the firm-level. Higher benefit “level and determination” correlates with an attraction of high-wage workers to firms over time and, as a result of the rise in non-discrimination policies surrounding benefit plans, firms tend to choose to standardize benefits to cater towards higher wage, more skilled workers rather than low-wage workers. If applied on the industry-level, it stands to reason that this trade-off would persist - industries with lower annual wage estimates should generally imply a higher effectiveness of benefit access in offsetting voluntary turnover.</p>
+</section>
+<section id="gap-contribution" class="level2">
+<h2 class="anchored" data-anchor-id="gap-contribution">Gap &amp; Contribution</h2>
+<p>One underutilized facet of benefit analysis is the determination of how the impact of benefits vary across industries - many studies tend to include industry fixed effects, but few consider whether industry interactions could shine light on overall benefits trends. This study intends to tackle this facet while limiting benefit multicollinearity.</p>
+<p><br></p>
+</section>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<section id="data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources">Data Source(s)</h2>
+<p>As previously mentioned, our dataset revolves around the EBS and JOLTS surveys from the Bureau of Labor Statistics. The Employee Benefits survey produces data regarding “the incidence … and provisions of selected employee benefit plans”, splitting data availability across different occupations, industries, geographic areas, full/part time work, establishment size, and average wage category, but unfortunately these demographics are mutually exclusive when considered within the full dataset (for example, the dataset doesn’t consider benefit access by industries with businesses within different U.S. census areas - only across different industries). The Job Openings and Labor Turnover Survey covers the production of monthly and annual estimates of job openings, hires, and separations, with similar demographics classifications as the EBS. However, in this case we are concerned primarily with the measurement for the quits portion of overall turnover. Additional datasets were created by categorizing benefits into specific Indexes and incorporating Principal Component Analysis, both of which serve to hopefully capture variances, reduce multicollinearity, and improve regression model stability.</p>
+</section>
+<section id="unit-of-observation" class="level2">
+<h2 class="anchored" data-anchor-id="unit-of-observation">Unit of Observation</h2>
+<p>Each row in the primary dataset represents a panel format observation on one Industry during a given Year.</p>
+</section>
+<section id="sample-scope" class="level2">
+<h2 class="anchored" data-anchor-id="sample-scope">Sample &amp; Scope</h2>
+<p>Because the dataset does not cover cross-classification reporting on an individual firm level, but rather on aggregate national level averages, it becomes difficult to control for firm differences and employee demographics in estimating the effects of benefits. In total, the dataset reports 66 rows (11 industries, 6 years) across 12 benefits columns. From the larger EBS dataset, only the benefits that were shared between it and the ECEC were considered, and only for industries with a Private-sector. This is because the private sector contains businesses which are more likely to be responsive to changes in employee needs (i.e.&nbsp;non-standardized benefit practices), and comprises a larger portion of the U.S.</p>
+</section>
+<section id="key-variables" class="level2">
+<h2 class="anchored" data-anchor-id="key-variables">Key Variables</h2>
+<p>The primary outcome variable for regression analysis is an industry’s labor turnover rate, particularly the proportion made up from quitting. Predictors / Controls include industry controls like annual wage and union membership rate, along with Access estimates for 12 benefits (defined benefit, defined contribution, long-term disability insurance, life insurance, paid holiday, sick leave, medicare, personal leave, retirement and savings, paid vacation, short-term disability insurance, and non-production bonuses) and 11 industries (“Construction”, “Education and health services”, “Finance and insurance”, “Health care and social assistance”, “Information”, “Leisure and hospitality”, “Manufacturing”, “Other services (except public administration)”, “Real estate and rental and leasing”, “Trade, transportation, and utilities”, and “Wholesale trade”). For feature engineering, benefits with shared characteristics which are highly correlated are averaged into specific “Indexes” - a Retirement Index (composed of defined benefit, defined contribution, and retirement and savings), Insurance Index (composed of short-term disability insurance, long-term disability insurance, life insurance, and medicare), and Leave Index (composed of paid holiday, paid vacation, personal leave, and sick leave).</p>
+<p>Our benefit access dataset produced 1 primary principal component (85.3% of variation covered). Significant loadings for PC1 (absolute value of loading &gt; 0.25) includes all benefits except for defined benefit. Because of this, PC1 can be used as an impromptu “significant benefits” index to compare which industries’ benefit distribution most contributes to lower turnover, even if individual / segment effects for benefits aren’t able to be reported.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-classic-2 caption-top table table-sm table-striped small">
+<caption>Table 1: Principal Component Loadings</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PC1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">life_insurance</td>
+<td style="text-align: right;">0.3096960</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">defined_contribution</td>
+<td style="text-align: right;">0.3044112</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">medicare</td>
+<td style="text-align: right;">0.3002425</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">retirement_and_savings</td>
+<td style="text-align: right;">0.2991715</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vacation</td>
+<td style="text-align: right;">0.2934137</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sick_leave</td>
+<td style="text-align: right;">0.2922193</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">holiday</td>
+<td style="text-align: right;">0.2894436</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">personal_leave</td>
+<td style="text-align: right;">0.2893680</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">long_term_disability_insurance</td>
+<td style="text-align: right;">0.2891475</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">short_term_disability_insurance</td>
+<td style="text-align: right;">0.2864696</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nonproduction_bonuses</td>
+<td style="text-align: right;">0.2836424</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="data-quality-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<p>In terms of limitations stemming from the main dataset, the number of observations is quite low, and ended up with some non-random missing data points from industries not having associated benefit access rates listed. Even considering that it focuses on aggregate estimates, panel data is expected to provide much more variability in its observations, and a significant increase in degrees of freedom. In an attempt to be able to utilize industry-wise interaction terms in our regression analysis given the data’s missing values, Mean Imputation by Chained Equations (MICE) is used to estimate benefit access where it would ordinarily be omitted, with missingness dummy indicators to inform the model that the missing values are Missing Not At Random (MNAR). The dataset is also, as previously mentioned, limited by its omitting of impactful control metrics, such as firm size or census region, which would help to improve the accuracy of regressed predictor-outcome relationships.</p>
+<p><br></p>
+</section>
+</section>
+<section id="empirical-strategy-methods" class="level1">
+<h1>Empirical Strategy &amp; Methods</h1>
+<section id="empirical-approach" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-approach">Empirical Approach</h2>
+<p>Our primary methods of analysis focus on Linear Regression, utilizing multiple models for our feature engineered and Principal Component datasets. Both regression types are Two-Way Fixed Effects models, as we are concerned with how our predictors change across both unit-specific and time-specific factors. Using both feature engineering and PCA individually improves overall interpretability by allowing us to see the effect of benefits both from grouped characteristics and from and industry’s composition of their most representative benefits.</p>
+</section>
+<section id="model-specification-analytical-framework" class="level2">
+<h2 class="anchored" data-anchor-id="model-specification-analytical-framework">Model Specification / Analytical Framework</h2>
+<p>Our empirical models are as follows:</p>
+<p>Indexed Regression Model(s):</p>
+<p><span class="math inline">\(QuitsRate_{i,t} = \beta_1Index_{i,t} + \beta_2Industry_{i} + \beta_3(Index_{i,t} \times Industry_{i}) + \gamma X_{i,t} + \alpha_{i} + \delta_{t} + \epsilon_{i,t}\)</span></p>
+<p>PCA Model:</p>
+<p><span class="math inline">\(QuitsRate_{i,t} = \beta_1PC1_{i,t} + \beta_2Industry_{i} + \beta_3(PC1_{i,t} \times Industry_{i}) + \gamma X_{i,t} + \alpha_{i} + \delta_{t} + \epsilon_{i,t}\)</span></p>
+<p>Where <span class="math inline">\(X_{i,t}\)</span> represents a vector of industry control variables, <span class="math inline">\(\gamma\)</span> represents the vector of coefficients for these control variables, <span class="math inline">\(\alpha\)</span> captures the industry-wise fixed effect, <span class="math inline">\(\delta\)</span> captures the time-wise fixed effect, and <span class="math inline">\(\epsilon\)</span> is the error term that captures unobserved heterogeneity.</p>
+</section>
+<section id="interpretation-identification" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-identification">Interpretation &amp; Identification</h2>
+<p>Regarding how the models are interpreted, the indexed regression models’ effects are described as, all else being equal, a one-standard-deviation increase in a benefit access predictor correlating with <span class="math inline">\(\beta\)</span> percentage point change in quits_rate, as the MICE output is standardized and subsequently pooled to produce said output, though practically interpretation will center around the magnitude and direction of a benefit’s relationship with quits_rate in relation to other industries rather than a specific change in quits_rate. This is because of remaining multicollinearity and omitted firm demographics. The principal component regression is interpreted as, all else being equal, a one-unit increase in a principal component correlating with a <span class="math inline">\(\beta\)</span> percentage point change in quits_rate. The aim is to provide descriptive and correlational evidence for benefit effect on quits.</p>
+<p><br></p>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="main-empirical-findings-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="main-empirical-findings-interpretation">Main Empirical Findings &amp; Interpretation</h2>
+<p>Beginning with the results of our benefit index regressions shown in Table 2, the Paid Leave index is most associated with lower quitting rates when being considered through the Finance &amp; insurance (-5.659) and Information (-5.2) industries. The Retirement index is most beneficial to the Leisure &amp; Hospitality (-4.271), Trade, transportation, &amp; utilities (-3.428), and Wholesale trade (-3.499) industries. The Insurance index is most beneficial to the Trade, Transportation, &amp; Utilities (-2.921) and Manufacturing (-2.338) industries. Comparing beta coefficients for the Leave Index, Retirement Index, and Insurance Index for each individual industry, there are many instances where they vary wildly, which shows the importance of choosing an acutely representative subset of benefits to provide to employees.</p>
+<p>Using Figure 1, we visualize the prevalence of benefits through each industry’s principal component score, and use this to inform the accuracy of what Table 1 determined to be each industry’s most impactful benefits index, arranged more presentably in Table 3. Going from highest to lowest PC1 scores: Cluster 3, composed of 2 business-serving industries, both value paid leave benefits - high stress work environments such as that of tech occupations would be inclined to choose health benefits when non-compensatory benefits like mental health evaluations or work acknowledgement are available, but because these aren’t included in out dataset, benefits that enable personal fulfillment are prioritized. Cluster 5’s industries have a couple differing qualities - 1 goods-producing, and 1 business-serving - along with their best indexes differing between the two. However, only manufacturing’s index aligns with its the goals and characteristics; Manufacturing often contains physical labor, necessitating health insurance coverage to attract and keep their workforce. Generally Wholesale Trade would follow suit as it is also a laborious industry depending on the occupation. Cluster 2 is made up of a wide range of industries, primarily health services and hybrid service industries (i.e.&nbsp;services which have significant markets for both individual and business clients). Trade, transportation &amp; utilities’ low annual wage necessitates deferred compensation in the form of retirement plans, and while initially Real estate, rental, &amp; leasing seems more like an insurance-focused industry, looking at Table 1 again shows that the Insurance_Index is also significant. Lastly, Clusters 1 and 4 both are essentially solitary industries groupings-wise; Construction values the opportunity to live securely after a physically demanding, but relatively low risk career, whereas Leisure &amp; Hospitality follows a similar stance as Trade, transportation &amp; utilities. Low wages, high unionization rates, and high turnover shows a need for people in this industry to defer additional compensation. Considering the Principal Component Regression output from Table 4, we see that the benefit distribution that is most associated with lower turnover is that of the Manufacturing industry (-1.371), followed by Leisure &amp; hospitality (-1.012). Again though, because the dataset for our primary analyses omits employee demographics, workplace conditions, and other non-compensatory benefits, it is implied that the PCR only captures benefit access effect on turnover in relation to other industries, rather than estimating an increase/decrease of quits_rate based off a given grouping of benefits.</p>
+</section>
+<section id="descriptive-evidence-and-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-evidence-and-model-results">Descriptive Evidence and Model Results</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Table 2: Benefit Index Effect on Labor Quits Rate by Industry
+==================================================================================================
+                                                                           Dependent variable:    
+                                                                       ---------------------------
+                                                                               quits_rate         
+                                                                               Two-Way FE         
+--------------------------------------------------------------------------------------------------
+log(annual_wage)                                                                 -0.552           
+                                                                                 (2.727)          
+                                                                                                  
+union_rate                                                                        0.061           
+                                                                                 (0.056)          
+                                                                                                  
+Year2021                                                                        0.655***          
+                                                                                 (0.168)          
+                                                                                                  
+Year2022                                                                         0.828**          
+                                                                                 (0.281)          
+                                                                                                  
+Year2023                                                                          0.654           
+                                                                                 (0.376)          
+                                                                                                  
+Year2024                                                                          0.733           
+                                                                                 (0.433)          
+                                                                                                  
+Year2025                                                                          0.535           
+                                                                                 (0.516)          
+                                                                                                  
+Leave_Index:IndustryConstruction                                                  0.006           
+                                                                                 (0.669)          
+                                                                                                  
+Leave_Index:IndustryEducation and health services                                -0.655           
+                                                                                 (1.510)          
+                                                                                                  
+Leave_Index:IndustryFinance and insurance                                       -5.659**          
+                                                                                 (2.364)          
+                                                                                                  
+Leave_Index:IndustryHealth care and social assistance                             0.116           
+                                                                                 (1.050)          
+                                                                                                  
+Leave_Index:IndustryInformation                                                  -5.200           
+                                                                                 (4.387)          
+                                                                                                  
+Leave_Index:IndustryLeisure and hospitality                                       2.156           
+                                                                                 (1.835)          
+                                                                                                  
+Leave_Index:IndustryManufacturing                                                -1.035           
+                                                                                 (1.962)          
+                                                                                                  
+Leave_Index:IndustryOther services (except public administration)                 0.201           
+                                                                                 (1.064)          
+                                                                                                  
+Leave_Index:IndustryReal estate and rental and leasing                           -0.821           
+                                                                                 (1.450)          
+                                                                                                  
+Leave_Index:IndustryTrade, transportation, and utilities                          4.300           
+                                                                                 (4.057)          
+                                                                                                  
+Leave_Index:IndustryWholesale trade                                               0.037           
+                                                                                 (1.509)          
+                                                                                                  
+Retirement_Index:IndustryConstruction                                            -1.502           
+                                                                                 (1.028)          
+                                                                                                  
+Retirement_Index:IndustryEducation and health services                           -0.568           
+                                                                                 (1.791)          
+                                                                                                  
+Retirement_Index:IndustryFinance and insurance                                   -0.603           
+                                                                                 (1.196)          
+                                                                                                  
+Retirement_Index:IndustryHealth care and social assistance                        0.194           
+                                                                                 (1.598)          
+                                                                                                  
+Retirement_Index:IndustryInformation                                             -0.404           
+                                                                                 (1.074)          
+                                                                                                  
+Retirement_Index:IndustryLeisure and hospitality                                 -4.271           
+                                                                                 (1.902)          
+                                                                                                  
+Retirement_Index:IndustryManufacturing                                           3.612*           
+                                                                                 (1.837)          
+                                                                                                  
+Retirement_Index:IndustryOther services (except public administration)            0.193           
+                                                                                 (0.843)          
+                                                                                                  
+Retirement_Index:IndustryReal estate and rental and leasing                      -0.105           
+                                                                                 (0.625)          
+                                                                                                  
+Retirement_Index:IndustryTrade, transportation, and utilities                   -3.428**          
+                                                                                 (1.441)          
+                                                                                                  
+Retirement_Index:IndustryWholesale trade                                         -3.499           
+                                                                                 (2.661)          
+                                                                                                  
+Insurance_Index:IndustryConstruction                                              1.660           
+                                                                                 (1.885)          
+                                                                                                  
+Insurance_Index:IndustryEducation and health services                            -0.500           
+                                                                                 (2.340)          
+                                                                                                  
+Insurance_Index:IndustryFinance and insurance                                    4.668*           
+                                                                                 (2.644)          
+                                                                                                  
+Insurance_Index:IndustryHealth care and social assistance                        -1.686           
+                                                                                 (1.572)          
+                                                                                                  
+Insurance_Index:IndustryInformation                                               3.680           
+                                                                                 (3.607)          
+                                                                                                  
+Insurance_Index:IndustryLeisure and hospitality                                  -0.319           
+                                                                                 (1.825)          
+                                                                                                  
+Insurance_Index:IndustryManufacturing                                            -2.338           
+                                                                                 (2.173)          
+                                                                                                  
+Insurance_Index:IndustryOther services (except public administration)            -0.573           
+                                                                                 (0.824)          
+                                                                                                  
+Insurance_Index:IndustryReal estate and rental and leasing                       -0.352           
+                                                                                 (1.513)          
+                                                                                                  
+Insurance_Index:IndustryTrade, transportation, and utilities                     -2.921           
+                                                                                 (1.875)          
+                                                                                                  
+Insurance_Index:IndustryWholesale trade                                           0.649           
+                                                                                 (1.907)          
+                                                                                                  
+Constant                                                                          7.263           
+                                                                                (29.818)          
+                                                                                                  
+--------------------------------------------------------------------------------------------------
+Observations                                                                       66             
+R2                                                                                0.992           
+Adjusted R2                                                                       0.980           
+Residual Std. Error                                                          0.132 (df = 25)      
+F Statistic                                                              79.146*** (df = 40; 25)  
+==================================================================================================
+Note:                                                                  *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-classic-2 caption-top table table-sm table-striped small">
+<caption>Table 3: Most Influential Benefit Index per Industry</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Index</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Industry</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Leave_Index</td>
+<td style="text-align: left;">Finance and insurance</td>
+<td style="text-align: right;">-5.6589901</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leave_Index</td>
+<td style="text-align: left;">Information</td>
+<td style="text-align: right;">-5.1995616</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Retirement_Index</td>
+<td style="text-align: left;">Leisure and hospitality</td>
+<td style="text-align: right;">-4.2709753</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Retirement_Index</td>
+<td style="text-align: left;">Wholesale trade</td>
+<td style="text-align: right;">-3.4989678</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Retirement_Index</td>
+<td style="text-align: left;">Trade, transportation, and utilities</td>
+<td style="text-align: right;">-3.4281992</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Insurance_Index</td>
+<td style="text-align: left;">Manufacturing</td>
+<td style="text-align: right;">-2.3376837</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Insurance_Index</td>
+<td style="text-align: left;">Health care and social assistance</td>
+<td style="text-align: right;">-1.6857691</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Retirement_Index</td>
+<td style="text-align: left;">Construction</td>
+<td style="text-align: right;">-1.5019957</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leave_Index</td>
+<td style="text-align: left;">Real estate and rental and leasing</td>
+<td style="text-align: right;">-0.8207330</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leave_Index</td>
+<td style="text-align: left;">Education and health services</td>
+<td style="text-align: right;">-0.6552189</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Insurance_Index</td>
+<td style="text-align: left;">Other services (except public administration)</td>
+<td style="text-align: right;">-0.5726375</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DANL_Capstone_Report_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Table 4: Principal Component Regression Output by Industry
+=====================================================================================
+                                                              Dependent variable:    
+                                                          ---------------------------
+                                                                  quits_rate         
+-------------------------------------------------------------------------------------
+PC1                                                                 -0.167           
+                                                                    (0.132)          
+                                                                                     
+log(annual_wage)                                                   3.832***          
+                                                                    (1.358)          
+                                                                                     
+union_rate                                                          -0.005           
+                                                                    (0.033)          
+                                                                                     
+PC1:IndustryEducation and health services                            0.239           
+                                                                    (0.182)          
+                                                                                     
+PC1:IndustryFinance and insurance                                    0.482           
+                                                                    (0.303)          
+                                                                                     
+PC1:IndustryHealth care and social assistance                        0.222           
+                                                                    (0.180)          
+                                                                                     
+PC1:IndustryInformation                                             0.223*           
+                                                                    (0.129)          
+                                                                                     
+PC1:IndustryLeisure and hospitality                                -1.012***         
+                                                                    (0.177)          
+                                                                                     
+PC1:IndustryManufacturing                                          -1.371**          
+                                                                    (0.529)          
+                                                                                     
+PC1:IndustryOther services (except public administration)          0.773***          
+                                                                    (0.188)          
+                                                                                     
+PC1:IndustryReal estate and rental and leasing                      0.258*           
+                                                                    (0.141)          
+                                                                                     
+PC1:IndustryTrade, transportation, and utilities                   -0.495**          
+                                                                    (0.211)          
+                                                                                     
+PC1:IndustryWholesale trade                                          0.179           
+                                                                    (0.231)          
+                                                                                     
+Constant                                                          -40.861***         
+                                                                   (14.943)          
+                                                                                     
+-------------------------------------------------------------------------------------
+Observations                                                          66             
+R2                                                                   0.990           
+Adjusted R2                                                          0.983           
+Residual Std. Error                                             0.120 (df = 37)      
+F Statistic                                                137.052*** (df = 28; 37)  
+=====================================================================================
+Note:                                                     *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+</section>
+<section id="connection-to-research-question" class="level2">
+<h2 class="anchored" data-anchor-id="connection-to-research-question">Connection to Research Question</h2>
+<p>Regarding the initial research question: This analysis presents a basic framework for employee benefit analysis, particularly in their effect on voluntary turnover, with the intention of minimizing the multicollinear nature of benefits. While we cannot tease out the effect of individual benefits here (perhaps it is impossible to), effective groupings of benefits that explain chunks of an industry’s unobserved heterogeneity and omitted variable bias help to ascertain a loose estimate of the kinds of benefits with which their prevalence most contributes to lower quitting rates.</p>
+<p><br></p>
+</section>
+</section>
+<section id="discussion-implications" class="level1">
+<h1>Discussion &amp; Implications</h1>
+<section id="interpretation-of-findings" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-of-findings">Interpretation of Findings</h2>
+<p>The results of this study can influence organizational dispositions towards leveraging untapped benefits to reduce costs associated with labor turnover, based on firm relation to macro industry characteristics. Findings seem to support the theory behind the benefit-wage trade-off, and emphasize the importance of a relevant benefits plan regardless of benefits standardization as per nondiscriminatory policy in the maintenance of employee compensation satisfaction for their given working context.</p>
+</section>
+<section id="economic-business-policy-or-social-implications" class="level2">
+<h2 class="anchored" data-anchor-id="economic-business-policy-or-social-implications">Economic, Business, Policy, or Social Implications</h2>
+<p>Leveraging non-wage compensation to lower turnover is an effective mitigator of operational risk and organizational volatility - lessening customer dissatisfaction, institutional knowledge loss, worker satisfaction, and informing budgeting decisions to increase standing in competitive labor markets and industries. Being knowledgable of an industry’s most relevant and impactful benefits could help a small company expand their enterprise with reasonable confidence that people will be receptive to what they have to offer, drawing in talent while increasing commitment to their organization.</p>
+</section>
+<section id="recommendation-or-decision-support" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation-or-decision-support">Recommendation or Decision Support</h2>
+<p>Particularly in areas of work where wages can range on the lower side, supplemental benefits packages should be utilized by businesses where possible, with an eye on the kinds of benefits that employees in that industry would prefer. In addition to this, knowing how each industry ranks against one another in terms of benefit access effect on quits and union membership could inform bargaining structure for benefits within unionized sectors.</p>
+<p><br></p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Employee turnover can be detrimental to an organization’s ability to carry out it’s objectives. By determining which kinds of benefits are more strongly associated with lower labor turnover, we provide a model that serves as a basic framework for recognizing relevant characteristics of industries and benefits which influence whether employees choose to remain with an organization. Through a Two-Way Fixed Effect empirical model comprised of data from various BLS sources including the EBS and JOLTS surveys, our analysis shows the importance of aligning benefit options with employee needs and industry tendencies, and maintains the benefit-wage trade-off through its effect on low annual average wages across industries. For industries that experience this trade-off, benefits packages which complement existing gaps in employee needs should be utilized by firms in order to maintain employee perception of organizational and compensatory satisfaction.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>Bahn, Kate, and Carmen Sanchez Cumming. Improving U.S. Labor Standards and the Quality of Jobs to Reduce the Costs of Employee Turnover to U.S. Companies. Dec.&nbsp;2020.</p>
+<p>de la Torre-Ruiz, José M. , et al.&nbsp;Employees Are Satisfied with Their Benefits, but so What? The Consequences of Benefit Satisfaction on Employees’ Organizational Commitment and Turnover Intentions. 2016, digibug.ugr.es/bitstream/handle/10481/86895/de%20la%20Torre-Ruiz%20et%20al.,%202019%20IJHRM%20(Accepted%20version).pdf;jsessionid=170F6490251E343E390C060BFEA491D8?sequence=1. Accessed 13 May 2026.</p>
+<p>Ouimet, Paige, and Geoffrey Tate. Firms with Benefits? Nonwage Compensation and Implications for Firms and Labor Markets. July 2023, https://doi.org/10.2139/ssrn.4112463. Accessed 13 May 2026.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="text/javascript" src="links.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Powered with GitHub, Quarto, and Jupyter Notebook<br>© Hayden Mikula, 2025</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
